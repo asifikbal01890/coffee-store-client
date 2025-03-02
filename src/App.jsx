@@ -19,6 +19,9 @@ function App() {
   return (
     <div className='text-center'>
       <Link to={'/add_coffee'}><button className='btn btn-primary'>Add Coffee</button></Link>
+      <Link to={'/register'}><button className='btn btn-primary'>Register</button></Link>
+      <Link to={'/login'}><button className='btn btn-primary'>Login</button></Link>
+      <Link to={'/users'}><button className='btn btn-primary'>Users</button></Link>
       <div className='grid grid-cols-2 gap-6 max-w-[1320px] mx-auto'>
         {
           coffeesInfo?.map(coffee => <Card

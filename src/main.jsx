@@ -8,6 +8,8 @@ import UpdateCoffee from './Components/UpdateCoffee/UpdateCoffee.jsx';
 import CoffeeDetails from './Components/CoffeeDetails/CoffeeDetails.jsx';
 import AuthProvider from './Context/AuthProvider/AuthProvider.jsx';
 import Register from './Components/Register/Register.jsx';
+import Login from './Components/Login/Login.jsx';
+import Users from './Components/Users/Users.jsx';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +24,15 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register></Register>,
+  },
+  {
+    path: "/login",
+    element: <Login></Login>,
+  },
+  {
+    path: "/users",
+    element: <Users></Users>,
+    loader: () => fetch('http://localhost:5000/users')
   },
   {
     path: "/coffee/:id",

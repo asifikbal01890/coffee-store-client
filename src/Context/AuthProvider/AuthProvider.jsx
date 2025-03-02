@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import auth from '../../Firebase/firebase.config';
-import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, deleteUser, onAuthStateChanged, reauthenticateWithCredential, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 
 export const AuthContext = createContext(null)
 
@@ -30,6 +30,17 @@ const AuthProvider = ({children}) => {
         setLoading(true)
         return sendPasswordResetEmail(auth, email)
     }
+    // const firebaseRemoveUser = () => {
+    //     setLoading(true)
+    //     console.log(auth.currentUser);
+        
+    //     return deleteUser( auth.currentUser)
+    // }
+
+const removeUser = (empass) =>{
+    return reauthenticateWithCredential( auth.currentUser, empass)
+} 
+
     const logOut = () =>{
         setLoading(true)
         return signOut(auth)
@@ -52,6 +63,7 @@ const AuthProvider = ({children}) => {
         profileUpdate,
         resetPass,
         logOut, 
+        removeUser,
         loading,
         setLoading
     }
